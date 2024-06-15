@@ -10,8 +10,7 @@ import '@mantine/core/styles.css';
 
 import './site.scss';
 
-export default class App extends React.Component {
-  render() {
+const App = () =>{
     return (
       <SettingsProvider>
         <MantineProvider>
@@ -20,4 +19,5 @@ export default class App extends React.Component {
       </SettingsProvider>
     );
   }
-}
+
+export default App

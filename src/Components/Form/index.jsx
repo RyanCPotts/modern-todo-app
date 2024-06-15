@@ -1,6 +1,5 @@
-function Form(props) {
-
-  return (
+const Form = (props) => {
+  return(
     <form onSubmit={props.handleSubmit}>
 
       <h2>Add To Do Item</h2>

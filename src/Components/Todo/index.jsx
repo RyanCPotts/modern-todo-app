@@ -11,7 +11,6 @@ import List from '../List';
 import Form from '../Form';
 
 const Todo = () => {
-
   const context = useContext(SettingsContext);
   const defaultValues = context.settings;
 

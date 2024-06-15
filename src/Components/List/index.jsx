@@ -1,15 +1,16 @@
 import { Card, Text } from '@mantine/core';
 
-function List(props) {
-  return (
+const List = (props) => {
+  return(
     <>
       {
-        props.list.map(item => (
+        props.list.map((item, idx) => (
 
           <Card
             shadow="lg"
             padding="xl"
             withBorder:true
+            key = {idx}
           >
 
             <Text fw={500} size="lg" mt="md">
@@ -26,7 +27,7 @@ function List(props) {
         ))
       }
     </>
-  );
+  )
 }
 
 export default List;
