@@ -1,10 +1,24 @@
-import { Card, Text } from '@mantine/core';
+import { Card, Text, Pagination} from '@mantine/core';
+import {When} from 'react-if';
+import {useContext} from 'react';
+import {SettingsContext} from '../../Context/Settings.jsx'
 
 const List = (props) => {
+  const pageItems = useContext(SettingsContext)
+  console.log(pageItems.pageItems)
+  const showCompleted = useContext(SettingsContext)
+  const renderList = showCompleted? props.list:props.list.filter(item =>!item.complete);
+console.log(renderList)
+  let start = pageItems.pageItems * (props.currentPage - 1);
+  console.log(start)
+  let end = start + pageItems.pageItems;
+  let numPages = Math.ceil(renderList.length / pageItems);
+  const displayList = renderList?renderList.slice(start, end): [];
+  console.log(displayList)
   return(
     <>
       {
-        props.list.map((item, idx) => (
+        displayList.map((item, idx) => (
 
           <Card
             shadow="lg"
@@ -25,9 +39,14 @@ const List = (props) => {
           </Card>
 
         ))
-      }
+  }
+  <When condition = {renderList.length > 0}>
+  <Pagination total={numPages} onChange={props.setCurrentPage} page = {props.currentPage} size="lg" radius="lg" withEdges />
+  </When>
     </>
   )
 }
+
+
 
 export default List;

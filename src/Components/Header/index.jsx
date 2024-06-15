@@ -1,7 +1,12 @@
-const Header = (props) => {
+import { Link } from "react-router-dom";
+
+const Header = () => {
   return(
     <header>
-      <h1>To Do List: {props.openItems} pending</h1>
+     <h1>Todo App</h1>
+     <nav>
+      <Link to = '/'>Home</Link>|<Link to = '/settings'>Settings</Link>
+     </nav>
     </header>
   )
 }

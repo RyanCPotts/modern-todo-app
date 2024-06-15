@@ -4,15 +4,17 @@ import useForm from '../../hooks/form';
 
 import { v4 as uuid } from 'uuid';
 
-import {SettingsContext} from '../../Context/Settings';
+import SettingsProvider from '../../Context/Settings';
 
 import Header from '../Header';
 import List from '../List';
 import Form from '../Form';
 
 const Todo = () => {
-  const context = useContext(SettingsContext);
-  const defaultValues = context.settings;
+  // const context = useContext(SettingsProvider);
+  const [defaultValues] = useState({difficulty:4})
+
+  // const {pageItems, showCompleted} = useContext(SettingsProvider)
 
   const [list, setList] = useState([]);
   const [displayList, setDisplayList] = useState([]);
@@ -47,35 +49,38 @@ const Todo = () => {
 
   useEffect(() => {
 
-    let filteredList = list.filter( item => {
-      return defaultValues.showCompleted ? true : item.complete === false;
-    });
+    let filteredList = list.filter( item =>
+    //    {
+    //   return defaultValues.showCompleted ? true : item.complete === false;
+    // }
+    !item.complete).length;
+  // };
 
-    let start = defaultValues.perPage * (currentPage - 1);
-    let end = start + defaultValues.perPage;
+    // let start = pageItems * (currentPage - 1);
+    // let end = start + pageItems;
 
-    setDisplayList(filteredList.slice(start, end));
+    // setDisplayList(showCompleted? filteredList.slice(start, end): []);
+    // console.log(displayList)
 
-    let incompleteCount = filteredList.length;
+    let incompleteCount = filteredList;
     setIncomplete(incompleteCount);
 
     document.title = `To Do List: ${incompleteCount}`;
 
 
-  }, [list, currentPage, defaultValues]);
+  }, [list]);
 
-  let numPages = Math.ceil(incomplete / defaultValues.perPage);
+  // let numPages = Math.ceil(incomplete / pageItems);
 
   return (
     <>
 
-      <Header openItems={incomplete} />
+      {/* <Header openItems={incomplete} /> */}
 
       <Form handleChange={handleChange} handleSubmit={handleSubmit} difficulty={defaultValues.difficulty} />
 
-      <List list={displayList} toggleComplete={toggleComplete} deleteItem={deleteItem} />
+      <List list={list} toggleComplete={toggleComplete} deleteItem={deleteItem} setCurrentPage ={setCurrentPage} currentPage = {currentPage}/>
 
-      <Pagination total={numPages} onChange={setCurrentPage} size="lg" radius="lg" withEdges />
 
     </>
   );

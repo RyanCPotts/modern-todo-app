@@ -1,32 +1,22 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 export const SettingsContext = React.createContext();
 
-function SettingsProvider(props) {
+// eslint-disable-next-line react/prop-types
+const SettingsProvider = ({children}) => {
 
-  const defaults = {
-    showCompleted: false,
-    difficulty: 4,
-    perPage: 3,
-  };
+const[showCompleted, setShowCompleted] = useState(false);
 
-  const [settings, setSettings] = useState(defaults);
+const[pageItems, setPageItems] = useState(3);
 
-  function toggleShowCompleted() {
-    setSettings({...settings, showCompleted: !settings.showCompleted});
-  }
+const[sort, setSort] = useState('difficulty');
 
-  function setPerPage(value) {
-    setSettings({...settings, perPage: value});
-  }
+let values = {
+    showCompleted, setShowCompleted, pageItems, setPageItems, sort, setSort
+};
 
-  const providedValues = { settings, toggleShowCompleted, setPerPage };
+return(<SettingsContext.Provider value = {values}>{children}</SettingsContext.Provider>)
 
-  return (
-    <SettingsContext.Provider value={providedValues}>
-      {props.children}
-    </SettingsContext.Provider>
-  );
 }
 
-export default SettingsProvider;
+export default SettingsProvider
