@@ -1,9 +1,54 @@
-# React + Vite
+# Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple todo application built using Vite.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# todo-app2
+- [Todo App](#todo-app)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Getting Started](#getting-started)
+  - [Running the Application](#running-the-application)
+  - [Configuration](#configuration)
+  - [Testing](#testing)
+  - [Troubleshooting](#troubleshooting)
+  - [License](#license)
+
+## Features
+
+- Add, update, and delete tasks.
+- Mark tasks as complete or incomplete.
+- Filter tasks by status.
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or later)
+- npm (v6 or later) or Yarn (v1.22 or later)
+
+### Installation
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/todo-app.git
+    cd todo-app
+    ```
+
+2. Install dependencies:
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+## Running the Application
+
+To start the development server, run:
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+![UML](./UML.png)

@@ -1,3 +1,4 @@
+import React from 'react'
 import { Card, Text, Pagination} from '@mantine/core';
 import {When} from 'react-if';
 import {useContext} from 'react';
@@ -23,7 +24,7 @@ console.log(renderList)
           <Card
             shadow="lg"
             padding="xl"
-            withBorder:true
+            withBorder={true}
             key = {idx}
           >
 

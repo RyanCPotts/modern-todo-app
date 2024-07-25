@@ -75,7 +75,7 @@ const Todo = () => {
   return (
     <>
 
-      {/* <Header openItems={incomplete} /> */}
+      <Header />
 
       <Form handleChange={handleChange} handleSubmit={handleSubmit} difficulty={defaultValues.difficulty} />
 
