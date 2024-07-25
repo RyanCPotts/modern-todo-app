@@ -9,6 +9,7 @@ import SettingsProvider from '../../Context/Settings';
 import Header from '../Header';
 import List from '../List';
 import Form from '../Form';
+import Auth from '../Auth/auth'
 
 const Todo = () => {
   // const context = useContext(SettingsProvider);
@@ -76,11 +77,11 @@ const Todo = () => {
     <>
 
       <Header />
-
+      <Auth>
       <Form handleChange={handleChange} handleSubmit={handleSubmit} difficulty={defaultValues.difficulty} />
 
       <List list={list} toggleComplete={toggleComplete} deleteItem={deleteItem} setCurrentPage ={setCurrentPage} currentPage = {currentPage}/>
-
+      </Auth>
 
     </>
   );
