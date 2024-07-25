@@ -5,6 +5,8 @@ import { LoginContext } from './context';
 const Login = () => {
 
     const { loggedIn, login, logOut } = useContext(LoginContext);
+console.log("Login context values:", { loggedIn, login, logOut });
+
     const [credentials, setCredentials] = useState({ username: '', password: '' })
 
     const handleChange = (e) => {

@@ -48,6 +48,9 @@ const Todo = () => {
 
   }
 
+
+  
+
   useEffect(() => {
 
     let filteredList = list.filter( item =>
@@ -77,9 +80,10 @@ const Todo = () => {
     <>
 
       <Header />
-      <Auth>
+      <Auth capability={'create'}>
       <Form handleChange={handleChange} handleSubmit={handleSubmit} difficulty={defaultValues.difficulty} />
-
+      </Auth>
+      <Auth capability = {'read'}>
       <List list={list} toggleComplete={toggleComplete} deleteItem={deleteItem} setCurrentPage ={setCurrentPage} currentPage = {currentPage}/>
       </Auth>
 

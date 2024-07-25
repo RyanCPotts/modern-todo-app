@@ -1,8 +1,10 @@
 import React from 'react'
-import { Card, Text, Pagination} from '@mantine/core';
+import { Button, Card, Text, Pagination} from '@mantine/core';
 import {When} from 'react-if';
 import {useContext} from 'react';
 import {SettingsContext} from '../../Context/Settings.jsx'
+import Auth from '../Auth/auth.jsx';
+
 
 const List = (props) => {
   const pageItems = useContext(SettingsContext)
@@ -33,10 +35,14 @@ console.log(renderList)
               <p><small>Assigned to: {item.assignee}</small></p>
               <p><small>Difficulty: {item.difficulty}</small></p>
             </Text>
-
+            <Auth capability = {'update'}>
             <Text mt="xs" c="dimmed" size="sm">
               <div onClick={() => props.toggleComplete(item.id)}>Complete: {item.complete.toString()}</div>
             </Text>
+            </Auth>
+            <Auth capability = {'delete'}>
+              <Button onClick = {()=>props.deleteItem(item.id)}>REMOVE ITEM</Button>
+            </Auth>
           </Card>
 
         ))

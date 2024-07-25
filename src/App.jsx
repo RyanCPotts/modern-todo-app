@@ -60,23 +60,20 @@ import Header from './Components/Header';
 const App = () => {
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS>
-      
-        <SettingsProvider>
-          <BrowserRouter>
-          <LoginProvider>
-            {/* <Header/> */}
-            <Login />
-            {/* <Todo /> */}
-            <Routes>
-              <Route path='/' element={<Todo />} />
-              <Route path='/settings' element={<SettingsForm />} />
-            </Routes>
-            <Auth><div>any user can see this</div></Auth>
-            </LoginProvider>
-          </BrowserRouter>
-        </SettingsProvider>
-      
-    </MantineProvider>
+  <LoginProvider>
+    <SettingsProvider>
+      <BrowserRouter>
+        <Login />
+        <Routes>
+          <Route path='/' element={<Todo />} />
+          <Route path='/settings' element={<SettingsForm />} />
+        </Routes>
+        <Auth><div>any user can see this</div></Auth>
+      </BrowserRouter>
+    </SettingsProvider>
+  </LoginProvider>
+</MantineProvider>
+
   );
 };
 

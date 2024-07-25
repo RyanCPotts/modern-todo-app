@@ -152,7 +152,9 @@ const LoginProvider = ({ children }) => {
   };
 
   const login = (username, password) => {
+    
     const validUser = testUsers[username];
+    console.log('valid user', validUser)
     if (validUser && validUser.password === password) {
       try {
         const validToken = jwt_decode(validUser.token);
