@@ -28,10 +28,10 @@ const testUsers = {
   },
 };
 const capabilities = {
-  "Administrator": ["create", "update", "delete"],
-  "Editor": ["create", "update"],
-  "Writer": ["create"],
-  "User": [],
+  "admin": ["read", "create", "update", "delete"],
+  "editor": ["read", "create", "update"],
+  "writer": ["read", "create"],
+  "user": [],
 }
 const LoginProvider = ({ children }) => {
 
