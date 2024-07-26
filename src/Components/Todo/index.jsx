@@ -9,6 +9,7 @@ import SettingsProvider from '../../Context/Settings';
 import Header from '../Header';
 import List from '../List';
 import Form from '../Form';
+import Auth from '../Auth/auth'
 
 const Todo = () => {
   // const context = useContext(SettingsProvider);
@@ -47,6 +48,9 @@ const Todo = () => {
 
   }
 
+
+  
+
   useEffect(() => {
 
     let filteredList = list.filter( item =>
@@ -76,11 +80,12 @@ const Todo = () => {
     <>
 
       <Header />
-
+      <Auth capability='create'>
       <Form handleChange={handleChange} handleSubmit={handleSubmit} difficulty={defaultValues.difficulty} />
-
+      </Auth>
+      <Auth capability = {'read'}>
       <List list={list} toggleComplete={toggleComplete} deleteItem={deleteItem} setCurrentPage ={setCurrentPage} currentPage = {currentPage}/>
-
+      </Auth>
 
     </>
   );
