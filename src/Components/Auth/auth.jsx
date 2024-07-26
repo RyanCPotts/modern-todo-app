@@ -1,18 +1,25 @@
-import{useContext} from 'react';
-import{When}from 'react-if';
-import {LoginContext} from './context'
+import { useContext } from 'react';
+import { When } from 'react-if';
+import { LoginContext } from './context';
 
-const Auth = ({capability, children})=>{
-const{loggedIn, user}= useContext(LoginContext);
-const userCapabilities = user? user.capabilities:[];
+const Auth = ({ capability, children }) => {
+  const { loggedIn, user, can } = useContext(LoginContext);
 
-const renderPage = loggedIn&&userCapabilities.includes(capability)
+  console.log('LoggedIn:', loggedIn);
+  console.log('User:', user);
+  console.log('Capability:', capability);
+  console.log('Can do capability:', can(capability));
 
-return(
-    <When condition = {renderPage}>
-        {children}
+  const isLoggedIn = loggedIn;
+  const canDoCap = capability ? can(capability) : true;
+
+  const renderPage = isLoggedIn && canDoCap;
+
+  return (
+    <When condition={renderPage}>
+      {children}
     </When>
-)
+  );
 }
 
-export default Auth
+export default Auth;

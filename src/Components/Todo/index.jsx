@@ -80,7 +80,7 @@ const Todo = () => {
     <>
 
       <Header />
-      <Auth capability={'create'}>
+      <Auth capability='create'>
       <Form handleChange={handleChange} handleSubmit={handleSubmit} difficulty={defaultValues.difficulty} />
       </Auth>
       <Auth capability = {'read'}>
