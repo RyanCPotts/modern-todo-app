@@ -1,8 +1,112 @@
 body {
-  background: #efefef;
+  background: #080808;
+  font-family: 'Arial', sans-serif;
+  margin: 20ox;
+  padding: 020x;
 }
 
+/* General Styles */
+.container {
+  max-width: 650px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #ba1b1b;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  color: #333;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="text"] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="range"] {
+  margin-top: 0.5rem;
+}
+
+/* Button */
+button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #9ed624;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #e6ebf1;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* List */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+.checkbox {
+  margin-right: 1rem;
+}
+
+.text {
+  flex: 1;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #dc3545;
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: color 0.3s;
+}
+
+.delete-btn:hover {
+  color: #c82333;
+}
+
+/* Mantine Card Root */
 .mantine-Card-root {
   margin: 1em auto;
   width: 75%;

@@ -28,16 +28,16 @@ const testUsers = {
   },
 };
 const capabilities = {
-  "Administrator": ["create", "update", "delete"],
-  "Editor": ["create", "update"],
-  "Writer": ["create"],
-  "User": [],
+  "admin": ["read", "create", "update", "delete"],
+  "editor": ["read", "create", "update"],
+  "writer": ["read", "create"],
+  "user": [],
 }
 const LoginProvider = ({ children }) => {
 
   const [loggedIn, setLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
-  // const [user, setUser] = useState({capabilities:[]});
+  // const [user, setUser] = useState(null);
+  const [user, setUser] = useState({capabilities:[]});
   const [error, setError] = useState(null);
   
 
@@ -45,31 +45,31 @@ const LoginProvider = ({ children }) => {
     return user?.capabilities?.includes(capability);
   };
 
-  const login = (username, password) => {
+  // const login = (username, password) => {
     
-    const validUser = testUsers[username];
+  //   const validUser = testUsers[username];
 
-    console.log('valid user', validUser)
-    if (validUser && validUser.password === password) {
-      try {
-        const validToken = jwt_decode(validUser.token);
-        console.log('valid token', validToken)
-        setLoggedIn(true);
-        setUser({ name: validUser.name, capabilities: validToken.capabilities });
-        setError(null);
-        cookie.save('auth', validUser.token);
-      } catch (e) {
-        setUser(null);
-        setLoggedIn(false);
-        setError(e.message);
-        console.error('token decode error', e);
-      }
-    } else {
-      setLoggedIn(false);
-      setUser(null);
-      setError('Please enter a valid username or password');
-    }
-  };
+  //   console.log('valid user', validUser)
+  //   if (validUser && validUser.password === password) {
+  //     try {
+  //       const validToken = jwt_decode(validUser.token);
+  //       console.log('valid token', validToken)
+  //       setLoggedIn(true);
+  //       setUser({ name: validUser.name, capabilities: validToken.capabilities });
+  //       setError(null);
+  //       cookie.save('auth', validUser.token);
+  //     } catch (e) {
+  //       setUser(null);
+  //       setLoggedIn(false);
+  //       setError(e.message);
+  //       console.error('token decode error', e);
+  //     }
+  //   } else {
+  //     setLoggedIn(false);
+  //     setUser(null);
+  //     setError('Please enter a valid username or password');
+  //   }
+  // };
 
 
   // const login = async (username, password) => {
@@ -118,48 +118,48 @@ const LoginProvider = ({ children }) => {
   //     console.error('Login error:', error);
   //   }
   // };
-  // const login = async (username, password) => {
-  //   try {
-  //     const config = {
-  //       baseURL: `${import.meta.env.VITE_API}`,
-  //       url: '/signin',
-  //       method: 'post',
-  //       auth: { username, password }
-  //     };
+  const login = async (username, password) => {
+    try {
+      const config = {
+        baseURL: `${import.meta.env.VITE_API}`,
+        url: '/signin',
+        method: 'post',
+        auth: { username, password }
+      };
       
-  //     const response = await axios(config);
+      const response = await axios(config);
   
-  //     if (response.status !== 200) {
-  //       throw new Error(`Login failed with status code: ${response.status}`);
-  //     }
+      if (response.status !== 200) {
+        throw new Error(`Login failed with status code: ${response.status}`);
+      }
   
-  //     const { token } = response.data;
+      const { token } = response.data;
       
-  //     if (!token) {
-  //       throw new Error('No token received from the server');
-  //     }
+      if (!token) {
+        throw new Error('No token received from the server');
+      }
   
-  //     const validToken = jwt_decode(token);
-  //     console.log('Decoded Token:', validToken);
+      const validToken = jwt_decode(token);
+      console.log('Decoded Token:', validToken);
   
-  //     validToken.capabilities = capabilities[validToken.username] || [];
+      validToken.capabilities = capabilities[validToken.username] || [];
   
-  //     console.log('Valid Token with capabilities:', validToken);
+      console.log('Valid Token with capabilities:', validToken);
   
-  //     setUser({
-  //       name: validToken.username,
-  //       capabilities: validToken.capabilities,
-  //     });
-  //     setLoggedIn(true);
-  //     setError(null);
-  //     cookie.save('auth', token);
-  //   } catch (error) {
-  //     setUser({ capabilities: [] });
-  //     setLoggedIn(false);
-  //     setError(error.message || 'An error occurred during login');
-  //     console.error('Login error:', error);
-  //   }
-  // };
+      setUser({
+        name: validToken.username,
+        capabilities: validToken.capabilities,
+      });
+      setLoggedIn(true);
+      setError(null);
+      cookie.save('auth', token);
+    } catch (error) {
+      setUser({ capabilities: [] });
+      setLoggedIn(false);
+      setError(error.message || 'An error occurred during login');
+      console.error('Login error:', error);
+    }
+  };
   
   
   

@@ -1,32 +1,49 @@
-import React from 'react'
+import React from 'react';
+import { TextInput, Button, Group, Text, Slider } from '@mantine/core';
 
 const Form = (props) => {
-  return(
+  return (
     <form onSubmit={props.handleSubmit}>
+      <Text align="center" size="xl" weight={700}>
+        Add To Do Item
+      </Text>
 
-      <h2>Add To Do Item</h2>
+      <Group direction="column" grow>
+        <TextInput
+          label="To Do Item"
+          placeholder="Item Details"
+          onChange={(e) => props.handleChange(e, 'text')}
+          name="text"
+        />
 
-      <label>
-        <span>To Do Item</span>
-        <input onChange={props.handleChange} name="text" type="text" placeholder="Item Details" />
-      </label>
+        <TextInput
+          label="Assigned To"
+          placeholder="Assignee Name"
+          onChange={(e) => props.handleChange(e, 'assignee')}
+          name="assignee"
+        />
 
-      <label>
-        <span>Assigned To</span>
-        <input onChange={props.handleChange} name="assignee" type="text" placeholder="Assignee Name" />
-      </label>
+        <Slider
+          label="Difficulty"
+          defaultValue={props.difficulty}
+          min={1}
+          max={5}
+          step={1}
+          onChange={(value) => props.handleChange({ target: { name: 'difficulty', value } })}
+          name="difficulty"
+          marks={[
+            { value: 1, label: '1' },
+            { value: 2, label: '2' },
+            { value: 3, label: '3' },
+            { value: 4, label: '4' },
+            { value: 5, label: '5' },
+          ]}
+        />
 
-      <label>
-        <span>Difficulty</span>
-        <input onChange={props.handleChange} defaultValue={props.difficulty} type="range" min={1} max={5} name="difficulty" />
-      </label>
-
-      <label>
-        <button type="submit">Add Item</button>
-      </label>
+        <Button type="submit">Add Item</Button>
+      </Group>
     </form>
-  )
-
-}
+  );
+};
 
 export default Form;
