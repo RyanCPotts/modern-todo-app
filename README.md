@@ -31,8 +31,8 @@ A simple todo application built using Vite.
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/todo-app.git
-    cd todo-app
+    git clone https://github.com/yourusername/modern-todo-app.git
+    cd modern-todo-app
     ```
 
 2. Install dependencies:
