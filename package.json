@@ -23,8 +23,11 @@
     "testEnvironment": "jsdom"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
     "@mantine/core": "^3.6.14",
     "@mantine/hooks": "^3.6.14",
+    "@mui/material": "^5.16.6",
     "@vitejs/plugin-react": "^4.3.1",
     "axios": "^1.7.2",
     "jwt-decode": "^3.0.0",
@@ -35,6 +38,7 @@
     "react-if": "^4.1.5",
     "react-router-dom": "^6.25.1",
     "react-scripts": "4.0.3",
+    "tabler-icons-react": "^1.56.0",
     "uuid": "^8.3.2"
   },
   "browserslist": {
